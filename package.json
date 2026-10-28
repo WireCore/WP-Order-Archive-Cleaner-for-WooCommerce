@@ -1,0 +1,16 @@
+{
+	"name": "wp-order-archive-cleaner-for-woocommerce",
+	"version": "1.0.0",
+	"private": true,
+	"license": "GPL-2.0-or-later",
+	"scripts": {
+		"build:css": "wirelayer-css embed --scope \"#wirecore-oac\" --components button,badge,card,alert,field,input,native-select,checkbox,checkbox-group,tabs,statistic,page-header,inline-code --out assets/wirelayer",
+		"format": "prettier --no-error-on-unmatched-pattern --write \"*.{php,md,json,yml}\" \"includes/**\" \"assets/**\" \"tests/**\" \".github/**\"",
+		"format:check": "prettier --no-error-on-unmatched-pattern --check \"*.{php,md,json,yml}\" \"includes/**\" \"assets/**\" \"tests/**\" \".github/**\""
+	},
+	"devDependencies": {
+		"@prettier/plugin-php": "^0.22.4",
+		"@wirecore/wirelayer-css": "0.6.0",
+		"prettier": "^3.1.1"
+	}
+}

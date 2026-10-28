@@ -1,0 +1,481 @@
+# Copyright (C) 2026 WireCore GmbH
+# This file is distributed under the GPL-2.0-or-later.
+msgid ""
+msgstr ""
+"Project-Id-Version: WireCore Order Archive Cleaner for WooCommerce 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/circle3-order-archive-cleaner-for-woocommerce\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-10-28T02:07:34+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: circle3-order-archive-cleaner-for-woocommerce\n"
+
+#. Plugin Name of the plugin
+#: wirecore-order-archive-cleaner.php
+msgid "WireCore Order Archive Cleaner for WooCommerce"
+msgstr ""
+
+#. Description of the plugin
+#: wirecore-order-archive-cleaner.php
+msgid "Moves old WooCommerce orders to an \"Archived\" status without deleting them – automatically, with rules, scheduled exports, retention and webhooks."
+msgstr ""
+
+#. Author of the plugin
+#: wirecore-order-archive-cleaner.php
+msgid "WireCore GmbH"
+msgstr ""
+
+#. Author URI of the plugin
+#: wirecore-order-archive-cleaner.php
+msgid "https://wirecore.net"
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:63
+#: includes/class-wirecore-oac-admin.php:67
+msgid "Order Archive"
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:84
+#: includes/class-wirecore-oac-dashboard.php:77
+msgid "Settings"
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:119
+msgid "If the webhook is enabled by an administrator, every archived order is sent to the configured HTTPS address, including the order ID, order number, previous status, customer email address, total, currency, order date and the address of this site. Scheduled exports and the backup before deletion send archived orders with customer names and email addresses as CSV file to the configured email address."
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:196
+msgid "Insufficient permissions."
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:246
+msgid "Archiving"
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:250
+msgid "Rules"
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:254
+msgid "Export & retention"
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:258
+msgid "Integrations"
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:280
+msgid "Settings saved."
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:287
+msgid "Saved. The webhook URL was discarded – it has to be a public HTTPS address."
+msgstr ""
+
+#. translators: 1: number of archived orders, 2: number of skipped orders
+#: includes/class-wirecore-oac-admin.php:296
+#, php-format
+msgid "Batch complete. Archived: %1$d, skipped by rules: %2$d."
+msgstr ""
+
+#. translators: 1: number of orders, 2: number of skipped orders
+#: includes/class-wirecore-oac-admin.php:308
+#, php-format
+msgid "Dry run: %1$d orders would be archived, %2$d skipped by rules. No order was changed."
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:551
+msgid "Save settings"
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:574
+#: includes/class-wirecore-oac-dashboard.php:36
+msgid "Archived orders"
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:584
+#: includes/class-wirecore-oac-dashboard.php:46
+msgid "Last run"
+msgstr ""
+
+#. translators: %s: time span, e.g. "2 hours"
+#: includes/class-wirecore-oac-admin.php:588
+#: includes/class-wirecore-oac-dashboard.php:52
+#, php-format
+msgid "%s ago"
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:594
+#: includes/class-wirecore-oac-dashboard.php:58
+msgid "Never"
+msgstr ""
+
+#. translators: 1: number of archived orders, 2: number of skipped orders
+#: includes/class-wirecore-oac-admin.php:603
+#, php-format
+msgid "Archived: %1$d, skipped by rules: %2$d"
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:612
+msgid "(dry run)"
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:620
+msgid "Next automatic run"
+msgstr ""
+
+#. translators: %s: time span, e.g. "2 hours"
+#: includes/class-wirecore-oac-admin.php:627
+#, php-format
+msgid "in %s"
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:633
+msgid "Not scheduled"
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:644
+msgid "No order status is selected – no orders will be archived."
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:653
+msgid "Overview"
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:675
+msgid "Processes one batch now with the saved settings. Respects the dry-run mode."
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:681
+#: includes/class-wirecore-oac-dashboard.php:72
+msgid "View archived orders"
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:685
+msgid "Run now"
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:695
+#: includes/class-wirecore-oac-admin.php:711
+msgid "Automatic archiving"
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:699
+msgid "Archived orders get the status “Archived”: they disappear from “All” in the order list, but remain in WooCommerce and can be restored at any time."
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:707
+msgid "Archive old orders once a day in the background"
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:720
+msgid "Archive orders older than"
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:724
+msgid "Based on the order date. 1 to 120 months."
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:728
+msgid "months"
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:733
+msgid "Order statuses to archive"
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:744
+msgid "Batch size"
+msgstr ""
+
+#. translators: %d: maximum batch size
+#: includes/class-wirecore-oac-admin.php:747
+#, php-format
+msgid "Orders checked per batch, at most %d. The daily run continues batch by batch until all orders are checked."
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:765
+msgid "Options"
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:771
+msgid "Only count which orders would be archived, without changing them"
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:775
+msgid "Dry run"
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:780
+msgid "Email a summary to the site admin after each automatic run that archived orders"
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:784
+msgid "Summary email"
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:804
+msgid "Exclusions"
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:805
+msgid "Orders matching one of these rules are never archived automatically. Manual archiving in the order list is not affected."
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:813
+msgid "Skip orders with at least one refund"
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:817
+msgid "Refunds"
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:823
+msgid "Skip orders with a total above"
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:827
+msgid "Empty or 0 = no limit."
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:836
+msgid "Skip orders of customers with these roles"
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:846
+msgid "Skip orders containing products from these categories"
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:865
+#: includes/class-wirecore-oac-admin.php:878
+msgid "Scheduled export"
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:866
+msgid "Sends all archived orders as CSV file by email."
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:874
+msgid "Send the export on a schedule"
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:881
+msgid "Frequency"
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:890
+msgid "Weekly"
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:897
+msgid "Monthly"
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:909
+msgid "Email address"
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:910
+msgid "Empty = email address of the site admin."
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:921
+msgid "Retention"
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:922
+msgid "Permanently deletes archived orders whose order date is older than the retention period – once a month, up to 200 orders per run. Deleted orders cannot be restored. Check your statutory retention periods first."
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:930
+msgid "Permanently delete archived orders after the retention period"
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:934
+msgid "Delete automatically"
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:943
+msgid "Retention period"
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:944
+msgid "1 to 20 years."
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:945
+msgid "years"
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:951
+msgid "Email the orders as CSV to the site admin before deleting them – if the email cannot be sent, nothing is deleted"
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:955
+msgid "Backup before deletion"
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:971
+#: includes/class-wirecore-oac-admin.php:984
+msgid "Webhook"
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:972
+msgid "Sends a JSON POST request whenever an order is archived, e.g. to Zapier, Make or your own systems."
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:980
+msgid "Send a request for every archived order"
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:990
+msgid "URL"
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:991
+msgid "Public HTTPS address only."
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:1002
+msgid "Secret"
+msgstr ""
+
+#. translators: %s: name of the HTTP header
+#: includes/class-wirecore-oac-admin.php:1005
+#, php-format
+msgid "Optional. Signs every request with HMAC-SHA256 in the header %s, so the receiver can verify it."
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:1019
+msgid "For developers"
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:1023
+msgid "<code>wirecore_oac_should_skip_order</code> – filters whether an order is never archived automatically (parameters: excluded by the rules, order)."
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:1029
+msgid "<code>wirecore_oac_after_archive_batch</code> – runs after every batch with the counts archived and skipped."
+msgstr ""
+
+#: includes/class-wirecore-oac-admin.php:1035
+msgid "WP-CLI: <code>wp wirecore-archive</code> (run, restore, status, export)."
+msgstr ""
+
+#: includes/class-wirecore-oac-archiver.php:56
+#: includes/class-wirecore-oac-archiver.php:345
+msgid "Archived manually."
+msgstr ""
+
+#: includes/class-wirecore-oac-archiver.php:71
+#: includes/class-wirecore-oac-archiver.php:92
+msgctxt "Order status"
+msgid "Archived"
+msgstr ""
+
+#. translators: %s: number of orders
+#: includes/class-wirecore-oac-archiver.php:82
+#, php-format
+msgid "Archived <span class=\"count\">(%s)</span>"
+msgid_plural "Archived <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/class-wirecore-oac-archiver.php:151
+msgid "Archived automatically by WireCore Order Archive Cleaner."
+msgstr ""
+
+#: includes/class-wirecore-oac-archiver.php:297
+msgid "Restored from the archive."
+msgstr ""
+
+#: includes/class-wirecore-oac-archiver.php:312
+msgid "Archive"
+msgstr ""
+
+#: includes/class-wirecore-oac-archiver.php:316
+#: includes/class-wirecore-oac-archiver.php:421
+msgid "Restore from archive"
+msgstr ""
+
+#. translators: %d: number of orders
+#: includes/class-wirecore-oac-archiver.php:388
+#, php-format
+msgid "%d order archived."
+msgid_plural "%d orders archived."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %d: number of orders
+#: includes/class-wirecore-oac-archiver.php:398
+#, php-format
+msgid "%d order restored."
+msgid_plural "%d orders restored."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/class-wirecore-oac-archiver.php:426
+msgid "Archive order"
+msgstr ""
+
+#: includes/class-wirecore-oac-dashboard.php:24
+msgid "Order archive"
+msgstr ""
+
+#: includes/class-wirecore-oac-dashboard.php:40
+msgid "Archived this month"
+msgstr ""
+
+#. translators: %s: site name
+#: includes/class-wirecore-oac-export.php:44
+#, php-format
+msgid "[%s] Archived orders export"
+msgstr ""
+
+#. translators: %d: number of orders
+#: includes/class-wirecore-oac-export.php:52
+#, php-format
+msgid "Attached is the export of %d archived order."
+msgid_plural "Attached is the export of %d archived orders."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %s: site name
+#: includes/class-wirecore-oac-retention.php:51
+#, php-format
+msgid "[%s] Archived orders before deletion"
+msgstr ""
+
+#. translators: 1: number of orders, 2: number of years
+#: includes/class-wirecore-oac-retention.php:59
+#, php-format
+msgid "The retention policy permanently deletes %1$d archived order older than %2$d years. Attached is its export."
+msgid_plural "The retention policy permanently deletes %1$d archived orders older than %2$d years. Attached is their export."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %s: site name
+#: includes/class-wirecore-oac-scheduler.php:126
+#, php-format
+msgid "[%s] Orders archived"
+msgstr ""
+
+#. translators: 1: number of archived orders, 2: number of skipped orders, 3: URL of the archived orders
+#: includes/class-wirecore-oac-scheduler.php:134
+#, php-format
+msgid ""
+"The automatic run of WireCore Order Archive Cleaner is complete.\n"
+"\n"
+"Archived: %1$d\n"
+"Skipped by rules: %2$d\n"
+"\n"
+"Archived orders: %3$s"
+msgstr ""
+
+#: wirecore-order-archive-cleaner.php:75
+msgid "WireCore Order Archive Cleaner requires WooCommerce to be installed and active."
+msgstr ""

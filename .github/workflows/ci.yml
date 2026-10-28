@@ -1,0 +1,127 @@
+name: CI
+
+on:
+    push:
+        branches: [main]
+    pull_request:
+
+permissions:
+    contents: read
+
+concurrency:
+    group: ci-${{ github.ref }}
+    cancel-in-progress: true
+
+jobs:
+    php-lint:
+        name: PHP ${{ matrix.php }} syntax
+        runs-on: ubuntu-latest
+        strategy:
+            fail-fast: false
+            matrix:
+                # Keep in sync with the tests below and "Requires PHP" (7.4)
+                php: ['7.4', '8.0', '8.1', '8.2', '8.3', '8.4', '8.5']
+        steps:
+            - uses: actions/checkout@v4
+            - uses: shivammathur/setup-php@v2
+              with:
+                  php-version: ${{ matrix.php }}
+                  coverage: none
+                  tools: none
+            - name: Lint PHP files
+              run: |
+                  find . -name '*.php' -not -path './vendor/*' -not -path './node_modules/*' -print0 \
+                    | xargs -0 -n1 php -l
+
+    php-compatibility:
+        name: PHP compatibility
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - uses: shivammathur/setup-php@v2
+              with:
+                  php-version: '8.5'
+                  coverage: none
+                  tools: composer
+            - name: Install dependencies
+              run: composer install --no-interaction --no-progress
+            # PHPCompatibility 10 knows the changes up to PHP 8.5; testVersion
+            # "7.4-" in phpcs.xml.dist checks all of them
+            - name: Run PHPCS (PHPCompatibilityWP)
+              run: composer phpcs
+
+    tests:
+        name: PHPUnit (PHP ${{ matrix.php }}, ${{ matrix.storage }})
+        runs-on: ubuntu-latest
+        strategy:
+            fail-fast: false
+            matrix:
+                php: ['7.4', '8.0', '8.1', '8.2', '8.3', '8.4', '8.5']
+                # Order storage: HPOS tables (default for new shops) or posts
+                storage: ['hpos', 'posts']
+        services:
+            mariadb:
+                image: mariadb:10.11
+                env:
+                    MARIADB_ROOT_PASSWORD: root
+                    MARIADB_DATABASE: wordpress_test
+                ports:
+                    - 3306:3306
+                options: >-
+                    --health-cmd="healthcheck.sh --connect --innodb_initialized"
+                    --health-interval=10s --health-timeout=5s --health-retries=10
+        env:
+            WP_TESTS_DB_HOST: 127.0.0.1:3306
+            WP_TESTS_DB_USER: root
+            WP_TESTS_DB_PASSWORD: root
+            WP_TESTS_DB_NAME: wordpress_test
+            WIRECORE_OAC_HPOS: ${{ matrix.storage == 'hpos' && '1' || '' }}
+        steps:
+            - uses: actions/checkout@v4
+            - uses: shivammathur/setup-php@v2
+              with:
+                  php-version: ${{ matrix.php }}
+                  extensions: mysqli
+                  coverage: none
+                  tools: composer
+            - name: Install dependencies
+              # Includes WooCommerce (wpackagist-plugin/woocommerce) for the tests
+              run: composer install --no-interaction --no-progress
+            - name: Run tests
+              run: composer test
+
+    format:
+        name: Prettier
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: 22
+                  cache: npm
+            - run: npm ci
+            - run: npm run format:check
+            - name: WireLayer CSS up to date
+              # assets/wirelayer/ is committed – it has to match the package version and the component list
+              run: |
+                  npm run build:css
+                  git diff --exit-code assets/wirelayer
+                  test -z "$(git status --porcelain assets/wirelayer)"
+
+    plugin-check:
+        name: Plugin Check
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - name: Build plugin package
+              # Same file selection as the wordpress.org deployment (.distignore).
+              run: |
+                  mkdir -p build/circle3-order-archive-cleaner-for-woocommerce
+                  rsync -a --exclude-from=.distignore ./ build/circle3-order-archive-cleaner-for-woocommerce/ --exclude=/build
+            - uses: wordpress/plugin-check-action@v1
+              with:
+                  build-dir: build/circle3-order-archive-cleaner-for-woocommerce
+                  slug: circle3-order-archive-cleaner-for-woocommerce
+                  include-experimental: true
+                  # Warnings fail the build as well – the plugin is free of both.
+                  strict: true

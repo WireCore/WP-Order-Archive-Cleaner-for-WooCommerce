@@ -1,0 +1,80 @@
+/*
+ * Layout of the settings page. The components come from WireLayer
+ * (assets/wirelayer/wirelayer.css, scoped to #wirecore-oac); colors and
+ * spacing use its variables.
+ */
+
+/* WordPress styles form controls and links by element (forms.css, common.css);
+   inside the page the WireLayer components style them */
+#wirecore-oac :is(a, button, input, select, textarea) {
+	box-shadow: none;
+	min-height: 0;
+	max-width: none;
+}
+
+#wirecore-oac select {
+	background-image: none;
+}
+
+#wirecore-oac input[type='number'] {
+	padding-inline-end: 0;
+}
+
+#wirecore-oac {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	max-width: 1200px;
+	margin-top: 12px;
+	background: transparent;
+	font-size: 14px;
+}
+
+#wirecore-oac .wirecore-oac-stack {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+#wirecore-oac .wirecore-oac-row {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px 12px;
+}
+
+/* Form fields in a card keep a readable width */
+#wirecore-oac .wc-card > .wc-field {
+	max-width: 40rem;
+}
+
+#wirecore-oac .wc-card > .wirecore-oac-narrow {
+	max-width: 16rem;
+}
+
+#wirecore-oac .wirecore-oac-checkbox-title {
+	display: block;
+	color: var(--wc-fg);
+	font-weight: 600;
+}
+
+#wirecore-oac .wirecore-oac-stats {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+	gap: 12px;
+}
+
+#wirecore-oac .wirecore-oac-list {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	padding-inline-start: 1.25rem;
+	list-style: disc;
+	line-height: 1.6;
+}
+
+#wirecore-oac .wirecore-oac-hint {
+	margin-inline-end: auto;
+	color: var(--wc-muted);
+	font-size: 13px;
+}
