@@ -19,6 +19,7 @@
     <a href="#webhook">Webhook</a> ·
     <a href="#development">Development</a> ·
     <a href="CHANGELOG.md">Changelog</a> ·
+    <a href="CONTRIBUTING.md">Contributing</a> ·
     <a href="SECURITY.md">Security</a>
 </p>
 
@@ -159,7 +160,7 @@ docker compose exec wordpress wp --allow-root wirecore-archive status
     docker compose exec wordpress wp --allow-root plugin check circle3-order-archive-cleaner-for-woocommerce \
         --include-experimental \
         --exclude-directories=node_modules,db-data,.vscode,.github,vendor,tests \
-        --exclude-files=.gitignore,.gitattributes,.distignore,.prettierrc,.prettierignore,CLAUDE.md,README.md,CHANGELOG.md,SECURITY.md,docker-compose.yml,Dockerfile,composer.json,composer.lock,package.json,package-lock.json,phpcs.xml.dist,phpunit.xml.dist
+        --exclude-files=.gitignore,.gitattributes,.distignore,.prettierrc,.prettierignore,CLAUDE.md,README.md,CHANGELOG.md,SECURITY.md,CONTRIBUTING.md,docker-compose.yml,Dockerfile,composer.json,composer.lock,package.json,package-lock.json,phpcs.xml.dist,phpunit.xml.dist
     ```
 
 ### Tests

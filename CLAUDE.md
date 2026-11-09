@@ -11,6 +11,7 @@ WooCommerce plugin, published on wordpress.org. The slug `circle3-order-archive-
 - UI in the WireLayer corporate design: the markup uses the `.wc-*` classes of `@wirecore/wirelayer-css` (class reference: `node_modules/@wirecore/wirelayer-css/llms-full.txt`). `npm run build:css` writes the used components, scoped to `#wirecore-oac`, to `assets/wirelayer/` – committed, CI checks it is up to date. Add a component to the list in `package.json` before using its classes, and run the command again after updating the package. `wirecore-oac-*` classes are for page layout in `assets/admin.css` (scoped to `#wirecore-oac`, colors and spacing from WireLayer variables). Icons are inline Lucide SVGs (`WireCore_OAC_Admin::icon()`).
 - Orders only through the WooCommerce order APIs (`wc_get_orders()`, `WC_Order`), never SQL – the plugin supports HPOS and the legacy post storage.
 - Supported versions: WordPress 6.5+, WooCommerce 8.2+, PHP 7.4 – 8.5 (verified with PHPCompatibility 10 and the tests on every PHP version) – do not use newer functions without raising the minimum, and avoid anything deprecated up to PHP 8.5 (e.g. `ReflectionProperty::setAccessible()` only below PHP 8.1). The Docker environment runs PHP 8.5.
+- Commits are signed off (`git commit -s`) – the DCO check on pull requests requires it (see `CONTRIBUTING.md`).
 - Formatting with Prettier (tabs, single quotes). Plugin Check must stay free of errors and warnings; justified exceptions are marked with `phpcs:ignore`/`phpcs:disable` plus a comment explaining why.
 
 ## Architecture
