@@ -1,10 +1,46 @@
-# WireCore Order Archive Cleaner for WooCommerce
+<p align="center">
+    <img src=".wordpress-org/icon-256x256.png" alt="" width="128" height="128" />
+</p>
 
-Archive old WooCommerce orders automatically to keep the order list focused – without deleting them. With rules, CSV export, retention and webhooks.
+<h1 align="center">WireCore Order Archive Cleaner for WooCommerce</h1>
+
+<p align="center">
+    Archive old WooCommerce orders automatically to keep the order list focused – without deleting them.<br />
+    With rules, CSV export, retention and webhooks.<br />
+    WordPress 6.5+ · WooCommerce 8.2+ · PHP 7.4 – 8.5 · HPOS · English and German
+</p>
+
+<p align="center">
+    <a href="https://wordpress.org/plugins/circle3-order-archive-cleaner-for-woocommerce/"><b>wordpress.org</b></a> ·
+    <a href="#installation">Installation</a> ·
+    <a href="#how-it-compares">How it compares</a> ·
+    <a href="#wp-cli">WP-CLI</a> ·
+    <a href="#hooks">Hooks</a> ·
+    <a href="#webhook">Webhook</a> ·
+    <a href="#development">Development</a> ·
+    <a href="CHANGELOG.md">Changelog</a> ·
+    <a href="SECURITY.md">Security</a>
+</p>
+
+<p align="center">
+    <a href="https://wordpress.org/plugins/circle3-order-archive-cleaner-for-woocommerce/"><img alt="wordpress.org version" src="https://img.shields.io/wordpress/plugin/v/circle3-order-archive-cleaner-for-woocommerce" /></a>
+    <a href="https://wordpress.org/plugins/circle3-order-archive-cleaner-for-woocommerce/"><img alt="Tested up to" src="https://img.shields.io/wordpress/plugin/tested/circle3-order-archive-cleaner-for-woocommerce" /></a>
+    <img alt="PHP 7.4+" src="https://img.shields.io/wordpress/plugin/required-php/circle3-order-archive-cleaner-for-woocommerce" />
+    <a href="https://github.com/WireCore/WP-Order-Archive-Cleaner-for-WooCommerce/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/WireCore/WP-Order-Archive-Cleaner-for-WooCommerce/actions/workflows/ci.yml/badge.svg?branch=main" /></a>
+    <a href="LICENSE"><img alt="License: GPL-2.0-or-later" src="https://img.shields.io/badge/license-GPL--2.0--or--later-green" /></a>
+</p>
+
+## About
 
 The plugin adds the order status “Archived” and moves qualifying orders into it, once a day in the background or manually from the order list. Archived orders disappear from “All”, but remain in WooCommerce and can be restored to their previous status at any time.
 
 The user-facing description lives in [`readme.txt`](readme.txt), which is also shown on wordpress.org.
+
+## Why WireCore Order Archive Cleaner
+
+After a few years, a shop has thousands of completed orders. The order list, its search and the status counts are dominated by orders nobody needs to look at again, and the ones that need attention get lost. Deleting them is not an option: accounting and tax rules require keeping them for years, and customers still ask about old orders.
+
+WooCommerce itself has no way to put orders aside. WireCore Order Archive Cleaner adds an archive status for that – automatic, with rules for the orders that should stay visible, reversible at any time, and with a CSV export and a retention period for the day the orders may finally go.
 
 ## Features
 
@@ -19,6 +55,29 @@ The user-facing description lives in [`readme.txt`](readme.txt), which is also s
 - Translations: English source strings, German (`de_DE`, `de_DE_formal`) bundled.
 
 Requires WordPress 6.5+, WooCommerce 8.2+ and PHP 7.4+.
+
+## How it compares
+
+|                                                      |            WireCore Order Archive Cleaner             | [ArchiveMaster](https://wordpress.org/plugins/archive-master/) | [Archive Old Orders](https://woocommerce.com/products/archive-old-orders/) | [Archiva](https://woocommerce.com/products/archiva/) | [Clicks Order Archiver](https://wordpress.org/plugins/clicks-order-archiver/) |
+| ---------------------------------------------------- | :---------------------------------------------------: | :------------------------------------------------------------: | :------------------------------------------------------------------------: | :--------------------------------------------------: | :---------------------------------------------------------------------------: |
+| Where archived orders are kept                       |      in WooCommerce, with the status "Archived"       |          separate archive database (local or remote)           |                          separate archive tables                           |               separate archive tables                |                       in WooCommerce, with a meta flag                        |
+| Makes the live order tables smaller                  |                           –                           |                               ✓                                |                                     ✓                                      |                          ✓                           |                                       –                                       |
+| Archives automatically on a schedule                 |                        ✓ daily                        |                              Pro                               |                                     ✓                                      |                          ✓                           |                                 – manual runs                                 |
+| HPOS and legacy post storage                         |                           ✓                           |                               ✓                                |                                     ✓                                      |                          ✓                           |                                       ✓                                       |
+| Restore, single and in bulk                          |               ✓ to the previous status                |                               ✓                                |                                     ✓                                      |                          ✓                           |                                       ✓                                       |
+| Rules beyond status and age                          | refunds, order total, customer role, product category | active subscriptions and memberships; product category in Pro  |                                     –                                      |                 subscription orders                  |                                       –                                       |
+| Dry run                                              |                           ✓                           |                               ?                                |                                WP-CLI only                                 |                     WP-CLI only                      |                                       ?                                       |
+| Export of archived orders                            |            CSV by email, weekly or monthly            |                     JSON, XML; CSV in Pro                      |                          CSV, XML, JSON download                           |                  CSV, XML download                   |                                       ?                                       |
+| Deletes archived orders after a retention period     |     ✓ optionally only after an emailed CSV backup     |                      manual deletion only                      |                         ✓ CSV backup on the server                         |              ✓ CSV backup on the server              |                             manual deletion only                              |
+| Archived orders stay in WooCommerce Analytics        |                           ✓                           |                              Pro                               |                                     –                                      |              – can be rebuilt per month              |                                       ✓                                       |
+| Customers still see archived orders under My Account |                           ✓                           |                              Pro                               |                                  optional                                  |                       optional                       |                                       ?                                       |
+| WP-CLI, webhook                                      |                        ✓ both                         |                               ?                                |                                   WP-CLI                                   |                        WP-CLI                        |                                       ?                                       |
+| Price                                                |                         free                          |                  free; Pro from $93 one-time                   |                                 45 €/year                                  |                      45 €/year                       |                                     free                                      |
+| Last update (tested up to WordPress)                 |                  October 2026 (7.1)                   |                      November 2026 (7.1)                       |                            ? (WooCommerce 10.9)                            |                 ? (WooCommerce 11.2)                 |                               August 2026 (7.0)                               |
+
+As of 9 November 2026 – ArchiveMaster 1.13.5, Archive Old Orders 1.6.7, Archiva 1.8.1, Clicks Order Archiver 1.0.0 – from each plugin's own documentation; `?` means it is not documented there. If something has changed, a correction is welcome.
+
+Where WireCore Order Archive Cleaner is behind today: it does not make the database smaller. Archived orders stay in the WooCommerce order tables – that keeps them in reports, customer histories and every tool that reads orders, but if the size of the order tables is the problem, a plugin that moves orders into separate tables fits better. It has no built-in rule for subscription orders; skip them with the filter `wirecore_oac_should_skip_order` (see [Hooks](#hooks)). Exports are sent by email, there is no download in the admin. And it is new, while ArchiveMaster has been in use since early 2025.
 
 ## Installation
 
@@ -157,7 +216,7 @@ Only the files needed by the plugin are shipped. Development files are excluded 
 ## Releasing
 
 1. Bump `Version:` in `wirecore-order-archive-cleaner.php` and `Stable tag:` in `readme.txt`, and add the changelog entry to `readme.txt` and `CHANGELOG.md`.
-2. Commit and push to `main`, wait for CI to pass.
+2. Merge it into `main` via pull request (CI must pass).
 3. Create and push a tag with the version number, without a `v` prefix:
 
     ```bash
@@ -166,7 +225,9 @@ Only the files needed by the plugin are shipped. Development files are excluded 
 
 [`.github/workflows/release.yml`](.github/workflows/release.yml) then checks that tag, plugin header and stable tag match, deploys the package (files selected by `.distignore`, assets from `.wordpress-org/`) to the wordpress.org SVN repository and creates a GitHub release with the ZIP.
 
-One-time setup: add the secrets `SVN_USERNAME` and `SVN_PASSWORD` (the SVN password from the wordpress.org profile under _Account & Security_) to the GitHub environment `wordpress.org`.
+Changes to `readme.txt` (e.g. "Tested up to") or `.wordpress-org/` alone don't need a release: [`.github/workflows/assets.yml`](.github/workflows/assets.yml) publishes them when they reach `main`, as long as the code on `main` matches the released version. It can also be started manually under _Actions_.
+
+One-time setup: add the secrets `SVN_USERNAME` and `SVN_PASSWORD` (the SVN password from the wordpress.org profile under _Account & Security_) to the GitHub environment `wordpress.org`, and allow the tag pattern `*.*.*` and the branch `main` under its deployment branches and tags.
 
 ## License
 
